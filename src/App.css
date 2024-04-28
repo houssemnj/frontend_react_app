@@ -1,0 +1,70 @@
+/* App.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  div {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+  }
+  
+  button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #4cae4c;
+  }
+  
+  /* Add more styles as needed */
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+  }
+  
+  /* Style the option elements */
+  select option {
+    padding: 10px;
+  }
+  
+  /* Style the focus and hover states for better user experience */
+  select:focus {
+    border-color: #5cb85c;
+    outline: none;
+  }
+  
+  select:hover {
+    border-color: #4cae4c;
+  }
