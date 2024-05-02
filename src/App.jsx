@@ -4,6 +4,8 @@ import ConsoleOutputForm from './ConsoleOutputForm';
 import DockerizeForm from './DockerizeForm';
 import CreatePipelineForm from './CreatePipelineForm';
 import ProxyForm from './ProxyForm';
+//import "antd/dist/antd.css"; 
+
 
 function App() {
   const [projectUrl, setProjectUrl] = useState('');
@@ -16,23 +18,29 @@ function App() {
   const [containerPort, setContainerPort] = useState('');
   const [deploymentEnvironment, setDeploymentEnvironment] = useState('');
   const [site_name, setSiteName] = useState('');
+  
 
 
   const dockerizeFormRef = useRef();
   const createPipelineFormRef = useRef();
   const proxyFormRef = useRef();      
   const consoleOutputFormRef = useRef();
- 
+
+
   const handleStart = () => {
+    const mockEvent = { preventDefault: () => {} };
     // Assuming handleSubmit is properly defined to return a Promise
-    dockerizeFormRef.current.handleSubmit(projectUrl).then(() => 
-      createPipelineFormRef.current.handleSubmit(projectUrl, jenkinsUrl , jenkinsUsername , sonar_url)).then(() => 
-        proxyFormRef.current.handleSubmit(projectUrl , site_name )).catch((error) => 
-          console.error(error));
+    dockerizeFormRef.current.handleSubmit(mockEvent)
+      .then(() => consoleOutputFormRef.current.handleSubmit(projectUrl,jenkinsUrl,jenkinsUsername))
+      .then(() => createPipelineFormRef.current.handleSubmit(mockEvent))
+      
+      .then(() => proxyFormRef.current.handleSubmit(mockEvent))
+      .catch((error) => console.error(error));
   };
 
+
   return (
-    <div>
+    <div className='main'>
       
       
       <label>
@@ -74,6 +82,7 @@ function App() {
       <label>
           Framework:
           <select value={framework} onChange={(e) => setFramework(e.target.value)}>
+              <option>select framework</option>
               <option value="flask">flask</option>
               <option value="react">react</option>
          </select>
@@ -99,6 +108,8 @@ function App() {
       <CreatePipelineForm ref={createPipelineFormRef} projectUrl={projectUrl} jenkinsUrl={jenkinsUrl} jenkinsUsername={jenkinsUsername} sonar_url={sonar_url} branchName={branchName} credentialsId={credentialsId}/>
       <ProxyForm ref={proxyFormRef} site_name={site_name}  />
       <ConsoleOutputForm ref={consoleOutputFormRef} projectUrl={projectUrl} jenkinsUrl={jenkinsUrl} jenkinsUsername={jenkinsUsername} />
+      
+     
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle , useRef} from 'react';
+import React, { useState, forwardRef, useImperativeHandle , useRef , useEffect} from 'react';
 import axios from 'axios';
 import FormData from "form-data";
 import "./App.css";
@@ -6,7 +6,21 @@ import "./App.css";
 
 const ProxyForm = forwardRef(({site_name}, ref) => {
     const [response, setResponse] = useState(null);
-    // const [site_name, setSiteName] = useState('');
+    
+
+
+    useEffect(() => {
+        const eventSource = new EventSource('/proxy');
+        eventSource.onmessage = function(event) {
+            const result = JSON.parse(event.data);
+            console.log(result);
+            setResponse(JSON.stringify(result));
+        };
+    
+        return () => {
+            eventSource.close();
+        };
+     }, []);
   
     const handleSubmit = async (event) => {
     
@@ -38,7 +52,7 @@ const ProxyForm = forwardRef(({site_name}, ref) => {
     }));
   
     return (
-      <header>
+      <header className='repo'>
         <form onSubmit={handleSubmit}>
           {/* <label>
             Site Name:

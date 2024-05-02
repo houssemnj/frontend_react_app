@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle , useRef} from 'react';
+import React, { useState, forwardRef, useImperativeHandle , useRef , useEffect} from 'react';
 import axios from 'axios';
 import FormData from "form-data";
 import "./App.css";
@@ -11,13 +11,26 @@ import "./App.css";
 
 const DockerizeForm = React.forwardRef(({ projectUrl,framework,containerPort,deploymentEnvironment }, ref) => {
   const [response, setResponse] = useState(null);
-  // const [projectUrl, setProjectUrl] = useState('');
-//   const [framework, setFramework] = useState('');
-//   const [containerPort, setContainerPort] = useState('');
-//   const [deploymentEnvironment, setDeploymentEnvironment] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+
+
+ useEffect(() => {
+    const eventSource = new EventSource('/dockerize');
+    eventSource.onmessage = function(event) {
+        const result = JSON.parse(event.data);
+        console.log(result);
+        setResponse(JSON.stringify(result));
+    };
+
+    return () => {
+        eventSource.close();
+    };
+ }, []);
 
   const handleSubmit = async (event) => {
     //event.preventDefault();
+    setIsSubmitting(true);
     const apiUrl = import.meta.env.VITE_APP_API_URL;
 
     let data = new FormData();
@@ -38,6 +51,7 @@ const DockerizeForm = React.forwardRef(({ projectUrl,framework,containerPort,dep
     try {
       const response = await axios(config);
       setResponse(JSON.stringify(response.data));
+      setIsSubmitting(false);
     } catch (error) {
       console.log(error);
     }
@@ -48,32 +62,19 @@ const DockerizeForm = React.forwardRef(({ projectUrl,framework,containerPort,dep
   }));
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
-        {/* <label>
-          Project URL:
-          <input type="text" value={projectUrl} onChange={(e) => setProjectUrl(e.target.value)} />
-        </label> */}
-        {/* <br></br>
-        <label>
-          Framework:
-          <input type="text" value={framework} onChange={(e) => setFramework(e.target.value)} />
-        </label>
-        <br></br>
-        <label>
-          Container Port:
-          <input type="text" value={containerPort} onChange={(e) => setContainerPort(e.target.value)} />
-        </label>
-        <br></br>
-        <label>
-          Deployment Environment:
-          <input type="text" value={deploymentEnvironment} onChange={(e) => setDeploymentEnvironment(e.target.value)} />
-        </label> */}
-        {/* <input type="submit" value="Submit" /> */}
-      </form>
-      <h4><pre>{response}</pre></h4>
+    <header className='repo'>
+        <form onSubmit={handleSubmit}>
+            {/* Form inputs and submit button here */}
+        </form>
+        
+        {isSubmitting ? (
+            <h4><pre>Dockerize in progress...</pre></h4>
+        ) : (
+            response && <h4><pre>{response}</pre></h4>
+        )}
+        
     </header>
-  );
+);
 });
 
 

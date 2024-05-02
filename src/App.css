@@ -6,7 +6,7 @@ body {
     padding: 20px;
   }
   
-  div {
+  div.main {
     background-color: #fff;
     max-width: 600px;
     margin: 20px auto;
@@ -14,6 +14,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
+
+  
   
   label {
     display: block;
@@ -68,3 +70,15 @@ body {
   select:hover {
     border-color: #4cae4c;
   }
+  
+
+
+
+  
+  .repo pre {
+    background-color: hsl(0, 0%, 100%);
+    padding: 1em;
+    border-radius: 4px;
+    overflow: auto;
+  }
+  
