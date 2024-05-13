@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  frontend_react_app:
+    image: ghcr.io/houssemnj/frontend_react_app/frontend_react_app-${deployment_environment}:${tag}
+    container_name: frontend_react_app-${deployment_environment}
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "${external_port}:5173"
+    network_mode: bridge
