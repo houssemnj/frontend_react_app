@@ -3,7 +3,7 @@
     top: 10%; /* Adjust this value to move the modal down */
     left: 50%;
     transform: translateX(-50%); /* Only move the modal horizontally */
-    background-color: #fff;
+    background-color: #d3edfc;
     padding: 1em;
     width: 1100px; /* Set the width to 1000px */
     max-height: 80vh; /* Set the maximum height to 80% of the viewport height */

@@ -9,7 +9,7 @@ import "./App.css";
 
 
 
-const DockerizeForm = React.forwardRef(({ projectUrl,framework,containerPort,deploymentEnvironment }, ref) => {
+const DockerizeForm = React.forwardRef(({ projectUrl,framework,containerPort,deploymentEnvironment,gitService }, ref) => {
   const [response, setResponse] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
@@ -38,6 +38,8 @@ const DockerizeForm = React.forwardRef(({ projectUrl,framework,containerPort,dep
     data.append('framework', framework);
     data.append('container_port', containerPort);
     data.append('deployment_environment', deploymentEnvironment);
+    data.append('git_service', gitService);
+
 
     let config = {
       method: 'post',

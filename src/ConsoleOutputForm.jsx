@@ -176,7 +176,7 @@ import "./modal.css"
 
 
 
-const ConsoleOutputForm = forwardRef(({ projectUrl, jenkinsUrl, jenkinsUsername }, ref) => {
+const ConsoleOutputForm = forwardRef(({ projectUrl, jenkinsUrl, jenkinsUsername ,gitService }, ref) => {
   const [consoleOutput, setConsoleOutput] = useState('');
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -188,6 +188,7 @@ const ConsoleOutputForm = forwardRef(({ projectUrl, jenkinsUrl, jenkinsUsername 
     data.append('jenkins_url', jenkinsUrl);
     data.append('jenkins_username', jenkinsUsername);
     data.append('project_url', projectUrl);
+    data.append('git_service', gitService);
 
     let config = {
       method: 'post',

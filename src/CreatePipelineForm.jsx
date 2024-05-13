@@ -3,7 +3,7 @@ import axios from 'axios';
 import FormData from "form-data";
 import "./App.css";
 
-const CreatePipelineForm = forwardRef(({ projectUrl, jenkinsUrl, jenkinsUsername, sonar_url, branchName, credentialsId }, ref) => {
+const CreatePipelineForm = forwardRef(({ projectUrl, jenkinsUrl, jenkinsUsername, sonar_url, branchName, credentialsId , gitService }, ref) => {
     const [response, setResponse] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     // const [build_status, setBuildStatus] = useState(null); 
@@ -43,6 +43,7 @@ const CreatePipelineForm = forwardRef(({ projectUrl, jenkinsUrl, jenkinsUsername
         data.append('jenkins_username', jenkinsUsername);
         data.append('branchName', branchName);
         data.append('credentialsId', credentialsId);
+        data.append('git_service', gitService);
 
         let config = {
             method: 'post',

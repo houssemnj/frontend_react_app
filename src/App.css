@@ -1,84 +1,220 @@
 /* App.css */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  div.main {
-    background-color: #fff;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
 
-  
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in the element's width and height */
-  }
-  
-  button {
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #4cae4c;
-  }
-  
-  /* Add more styles as needed */
-  select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #fff;
-    box-sizing: border-box; /* Include padding and border in the element's width and height */
-  }
-  
-  /* Style the option elements */
-  select option {
-    padding: 10px;
-  }
-  
-  /* Style the focus and hover states for better user experience */
-  select:focus {
-    border-color: #5cb85c;
-    outline: none;
-  }
-  
-  select:hover {
-    border-color: #4cae4c;
-  }
-  
+@keyframes AnimatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 22px;
+  gap: 22px; /* Space between the two main containers */
+  background: linear-gradient(270deg, #3fb1f3, #d3f2fc, #3fb1f3);
+  background-size: 600% 600%;
+  animation: AnimatedBackground 10s ease infinite; 
+}
+.header {
+  width: 100%;
+  background-color: #FFF; /* Adjust the color to match your header's design */
+  padding: 10px 0; /* Add some vertical padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for depth */
+}
+
+.logo-container {
+  text-align: center; /* Center the logo horizontally */
+  margin-bottom: 20px; /* Space between the logo and the content below */
+}
+
+.logo-container img {
+  max-width: 200px; /* Adjust the size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.main {
+  flex-basis: 35%; /* Adjusted to take up slightly less than half of the container's width for spacing */
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%); /* A subtle gradient for depth */
+  padding: 20px;
+  border-radius: 12px; /* Slightly larger border-radius for a softer look */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* A deeper shadow for a floating effect */
+  height: fit-content; /* Adjustcont height based on content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for interactive effects */
+  font-family: 'Poppins', sans-serif; /* Elegant and modern font */
+  color: #ffffff; /* A color that contrasts well with the light background */
+  position: relative; /* For pseudo-elements or absolutely positioned elements */
+  overflow: hidden; /* Ensures that children don't overflow the rounded corners */
+  height:1009px
+}
+
+.main:hover {
+  transform: translateY(-5px); /* Moves up slightly on hover for an interactive feel */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* A more pronounced shadow on hover */
+}
+
+.right-container {
+  flex-basis: 65%; /* Take up the o   ther half of the container's width */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  gap: 20px; /* Space between main2 and main3 */
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 20px 0; /* Adjust margin as needed */
+}
 
 
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #3498db;
+  border-radius: 1px;
+}
+
+.main2{
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%); /* A gentle and elegant gradient */
+  padding: 20px;
+  border-radius: 12px; /* Consistent with .main for a cohesive look */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  font-family: 'Poppins', sans-serif; /* Matching .main for consistency */
+  color: #000000; /* A deep, readable color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Interactive effects */
+  position: relative; /* For additional styling or pseudo-elements */
+  overflow: auto;
+  max-height: 756px;
+  max-width: 1100px;
+}
+.main3 {
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%); /* A gentle and elegant gradient */
+  padding: 20px;
+  border-radius: 12px; /* Consistent with .main for a cohesive look */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  font-family: 'Poppins', sans-serif; /* Matching .main for consistency */
+  color: #000000; /* A deep, readable color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Interactive effects */
+  position: relative; /* For additional styling or pseudo-elements */
+  overflow-y: auto; 
+  max-height: 200px;/* Keeps content within the rounded corners */
+  max-width: 1100px;
+}
+
+.main2:hover, .main3:hover {
+  transform: translateY(-5px); /* A subtle lift effect on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* A more pronounced shadow for a dynamic interaction */
+}
+
+/* Optional: If you want main3 to appear before main2 */
+.main3 {
+  order: -1; /* Place main3 above main2 */
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-weight: 600; /* Slightly bolder than normal but not too heavy */
+  color: #333;
+  font-family: 'Open Sans', sans-serif; /* A more modern font */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  cursor: pointer; /* Indicates that label text is associated with an input */
+}
+
+label:hover {
+  color: #007bff; /* Highlight color when hovered */
+  transform: translateY(-2px); /* Slight upward shift to indicate interactivity */
+}
+
+/* Style for the text of the label */
+label span {
+  display: block;
+  margin-bottom: 5px; /* Space between label text and input */
+  font-size: 14px; /* Adjust font size as needed */
+  letter-spacing: 0.5px; /* Slight spacing for better readability */
+}
+
+/* Optional: Add an animation to the label on focus within the input */
+input:focus + label span,
+select:focus + label span {
+  color: #007bff; /* Highlight color when input is focused */
+  transform: scale(1.05); /* Slight increase in size for emphasis */
+}
+
+input[type="text"], select {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, select:focus {
+  background: linear-gradient(145deg, #f4f7ff, #edeff0);
+  border-color: #293f1c;
+  outline: none;
+}
+
+input[type="text"]:hover, select:hover {
+  background: linear-gradient(145deg, #f4f7ff, #edeff0);
+  border-color: #94beeb;
+}
+
+button {
+  background: linear-gradient(145deg, #5889c2, #0d6b83);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s;
   
-  .repo pre {
-    background-color: hsl(0, 0%, 100%);
-    padding: 1em;
-    border-radius: 4px;
-    overflow: auto;
-  }
   
+}
+
+button:hover {
+  background: linear-gradient(145deg, #5889c2, #0d6b83);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Additional styles for the select dropdown */
+select {
+  cursor: pointer;
+}
+
+/* Style the option elements */
+select option {
+  padding: 10px;
+}
+
+/* Style the form components */
+.DockerizeForm, .CreatePipelineForm, .ProxyForm, .StageViewForm, .ConsoleOutputForm {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
